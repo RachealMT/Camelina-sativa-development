@@ -1,0 +1,341 @@
+#Racheal Upton
+#Camelina nitrogen structural traits - All seeds
+
+
+rm(list=ls())
+library(plyr)
+library(vegan)
+library(reshape)
+library(ggplot2)
+library(tidyverse)
+library(ggpubr)
+library(rstatix)
+library(dplyr)
+
+
+#use "allseedscamelina.csv"
+CH<-read.csv(file.choose(), header=TRUE)
+head(CH)
+str(CH)
+
+
+#testing beta branch
+summary(test<-aov(Beta~Line+Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test)
+summary(test2<-aov(Beta~Line*Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test2)
+
+#testing zeta branch
+summary(test<-aov(Zeta~Line+Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test)
+summary(test2<-aov(Zeta~Line*Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test2)
+
+#testing Kappa branch
+summary(test<-aov(Kappa~Line+Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test)
+summary(test2<-aov(Kappa~Line*Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test2)
+
+#testing Tau branch
+summary(test<-aov(Tau~Line+Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test)
+summary(test2<-aov(Tau~Line*Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test2)
+
+
+#testing Chi branch
+summary(test<-aov(Chi~Line+Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test)
+summary(test2<-aov(Chi~Line*Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test2)
+
+#testing Xi branch
+summary(test<-aov(Xi~Line+Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test)
+summary(test2<-aov(Xi~Line*Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test2)
+
+
+#testing Upsilon branch
+summary(test<-aov(Upsilon~Line+Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test)
+summary(test2<-aov(Upsilon~Line*Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test2)
+
+
+#testing Omega branch
+summary(test<-aov(Omega~Line+Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test)
+summary(test2<-aov(Omega~Line*Nitrogen+(1|Rep), data=CH))
+TukeyHSD(test2)
+
+
+
+#using seed counts now
+
+
+#use betaseedcounts.csv
+
+CHb<-read.csv(file.choose(), header=TRUE)
+head(CHb)
+str(CHb)
+#testing beta branch
+summary(test<-aov(Beta.seeds~Line+Nitrogen+(1|Rep), data=CHb))
+TukeyHSD(test)
+#this is the best model
+summary(test2<-aov(Beta.seeds~Line*Nitrogen+(1|Rep), data=CHb))
+TukeyHSD(test2)
+summary(test3<-aov(Beta.seeds~Line*Nitrogen+Architecture+(1|Rep), data=CHb))
+TukeyHSD(test3)
+summary(test4<-aov(Beta.seeds~Architecture*Line*Nitrogen+(1|Rep), data=CHb))
+TukeyHSD(test4)
+
+
+#use zetaseedcounts.csv
+
+CHz<-read.csv(file.choose(), header=TRUE)
+head(CHz)
+str(CHz)
+#testing zeta branch
+summary(test<-aov(Zeta.seeds~Line+Nitrogen+(1|Rep), data=CHz))
+TukeyHSD(test)
+#this is the best model, shows only line without N inputs or branch no. influences zeta seed count
+summary(test2<-aov(Zeta.seeds~Line*Nitrogen+(1|Rep), data=CHz))
+TukeyHSD(test2)
+summary(test3<-aov(Zeta.seeds~Line*Nitrogen+Architecture+(1|Rep), data=CHz))
+TukeyHSD(test3)
+summary(test4<-aov(Zeta.seeds~Architecture*Line*Nitrogen+(1|Rep), data=CHb))
+TukeyHSD(test4)
+
+
+#use kappaseeds.csv
+
+CHk<-read.csv(file.choose(), header=TRUE)
+head(CHk)
+str(CHk)
+#testing kappa branch
+#this is the best model
+summary(test<-aov(Kappa.seeds~Line+Nitrogen+(1|Rep), data=CHk))
+TukeyHSD(test)
+summary(test2<-aov(Kappa.seeds~Line*Nitrogen+(1|Rep), data=CHk))
+TukeyHSD(test2)
+summary(test3<-aov(Kappa.seeds~Line*Nitrogen+Architecture+(1|Rep), data=CHk))
+TukeyHSD(test3)
+summary(test4<-aov(Kappa.seeds~Architecture*Line*Nitrogen+(1|Rep), data=CHk))
+TukeyHSD(test4)
+
+
+#use tauseeds.csv
+
+CHt<-read.csv(file.choose(), header=TRUE)
+head(CHt)
+str(CHt)
+#testing Tau branch
+summary(test<-aov(Tau.seeds~Line+Nitrogen+(1|Rep), data=CHt))
+TukeyHSD(test)
+#this is the best model, shows only line without N inputs or branch no. influences zeta seed count
+summary(test2<-aov(Tau.seeds~Line*Nitrogen+(1|Rep), data=CHt))
+TukeyHSD(test2)
+summary(test3<-aov(Tau.seeds~Line*Nitrogen+Architecture+(1|Rep), data=CHt))
+TukeyHSD(test3)
+summary(test4<-aov(Tau.seeds~Architecture*Line*Nitrogen+(1|Rep), data=CHt))
+TukeyHSD(test4)
+
+
+#use chiseeds.csv
+
+CHc<-read.csv(file.choose(), header=TRUE)
+head(CHc)
+str(CHc)
+#testing Chi branch
+summary(test<-aov(Chi.seeds~Line+Nitrogen+(1|Rep), data=CHc))
+TukeyHSD(test)
+#this is the best model, shows only line without N inputs or branch no. influences zeta seed count
+summary(test2<-aov(Chi.seeds~Line*Nitrogen+(1|Rep), data=CHc))
+TukeyHSD(test2)
+summary(test3<-aov(Chi.seeds~Line*Nitrogen+Architecture+(1|Rep), data=CHc))
+TukeyHSD(test3)
+summary(test4<-aov(Chi.seeds~Architecture*Line*Nitrogen+(1|Rep), data=CHc))
+TukeyHSD(test4)
+
+
+
+#use xiseeds.csv
+
+CHx<-read.csv(file.choose(), header=TRUE)
+head(CHx)
+str(CHx)
+#testing Xi branch
+#only high N lines have Xi branches
+summary(test<-aov(Xi.seeds~Line+(1|Rep), data=CHx))
+TukeyHSD(test)
+
+summary(test3<-aov(Xi.seeds~Line+Architecture+(1|Rep), data=CHx))
+TukeyHSD(test3)
+summary(test4<-aov(Xi.seeds~Architecture*Line+(1|Rep), data=CHx))
+TukeyHSD(test4)
+
+
+#use upsilonseeds.csv
+
+CHu<-read.csv(file.choose(), header=TRUE)
+head(CHu)
+str(CHu)
+#testing Xi branch
+#only high N lines have Upsilon branches
+summary(test<-aov(Upsilon.seeds~Line+(1|Rep), data=CHu))
+TukeyHSD(test)
+
+summary(test3<-aov(Upsilon.seeds~Line+Architecture+(1|Rep), data=CHu))
+TukeyHSD(test3)
+summary(test4<-aov(Upsilon.seeds~Architecture*Line+(1|Rep), data=CHu))
+TukeyHSD(test4)
+
+#use omegaseeds.csv
+
+CHo<-read.csv(file.choose(), header=TRUE)
+head(CHo)
+str(CHo)
+#testing Omega branch
+#only high N lines have Omega branches
+summary(test<-aov(Omega.seeds~Line+(1|Rep), data=CHo))
+TukeyHSD(test)
+
+summary(test3<-aov(Omega.seeds~Line+Architecture+(1|Rep), data=CHo))
+TukeyHSD(test3)
+summary(test4<-aov(Omega.seeds~Architecture*Line+(1|Rep), data=CHo))
+TukeyHSD(test4)
+
+#lets look at correlations between the total seed no and the seed no on branches, only including plants that have that seed no.
+library("ggpubr")
+#lets start with beta 
+ggscatter(CHb, x = "Beta.seeds", y = "Total.seeds", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Beta Branch Seed No.", ylab = "Total Branch Seed No.")
+
+#significant correlation between beta branch seed no and total branch seed no. p = 0.0098, R = 0.39
+
+
+ggscatter(CHb, x = "Beta.seeds", y = "Branches", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Beta Branch Seed No.", ylab = "Branch No.")
+
+#not significant
+
+#Now zeta
+ggscatter(CHz, x = "Zeta.seeds", y = "Total.seeds", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Zeta Branch Seed No.", ylab = "Total Branch Seed No.")
+
+#significant correlation between zeta branch seed no and total branch seed no.
+
+
+ggscatter(CHz, x = "Zeta.seeds", y = "Branches", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Zeta Branch Seed No.", ylab = "Branch No.")
+
+#not significant
+
+#Now kappa
+ggscatter(CHk, x = "Kappa.seeds", y = "Total.seeds", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Kappa Branch Seed No.", ylab = "Total Branch Seed No.")
+
+#significant correlation between zeta branch seed no and total branch seed no.
+
+
+ggscatter(CHk, x = "Kappa.seeds", y = "Branches", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Kappa Branch Seed No.", ylab = "Branch No.")
+
+#not significant
+
+#Now Tau
+ggscatter(CHt, x = "Tau.seeds", y = "Total.seeds", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Tau Branch Seed No.", ylab = "Total Branch Seed No.")
+
+#significant correlation between zeta branch seed no and total branch seed no.
+
+
+ggscatter(CHt, x = "Tau.seeds", y = "Branches", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Tau Branch Seed No.", ylab = "Branch No.")
+
+#not significant
+
+#Now Chi
+ggscatter(CHc, x = "Chi.seeds", y = "Total.seeds", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Chi Branch Seed No.", ylab = "Total Branch Seed No.")
+
+#significant correlation between chi branch seed no and total branch seed no.
+
+
+ggscatter(CHc, x = "Chi.seeds", y = "Branches", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Chi Branch Seed No.", ylab = "Branch No.")
+
+#not significant
+
+
+#Now Xi
+ggscatter(CHx, x = "Xi.seeds", y = "Total.seeds", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Xi Branch Seed No.", ylab = "Total Branch Seed No.")
+
+#significant correlation between chi branch seed no and total branch seed no.
+
+
+ggscatter(CHx, x = "Xi.seeds", y = "Branches", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Xi Branch Seed No.", ylab = "Branch No.")
+
+#not significant
+
+
+#Now Upsilonn
+ggscatter(CHu, x = "Upsilon.seeds", y = "Total.seeds", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Upsilon Branch Seed No.", ylab = "Total Branch Seed No.")
+
+#significant correlation between chi branch seed no and total branch seed no.
+
+
+ggscatter(CHu, x = "Upsilon.seeds", y = "Branches", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Upsilon Branch Seed No.", ylab = "Branch No.")
+
+#not significant
+
+#Now Omega
+ggscatter(CHo, x = "Omega.seeds", y = "Total.seeds", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Omega Branch Seed No.", ylab = "Total Branch Seed No.")
+
+#significant correlation between chi branch seed no and total branch seed no.
+
+
+ggscatter(CHo, x = "Omega.seeds", y = "Branches", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "spearman",
+          xlab = "Omega Branch Seed No.", ylab = "Branch No.")
+
+#not significant
+
