@@ -1,0 +1,10 @@
+# Camelina-sativa-development
+camelina sativa development experiment - nitrogen deprivation
+
+Experimental design described in ‘README Camelina RNA for Annotation.txt’
+
+For this experiment we used plants that were grown for RNA-seq and analyzed their architecture/phenotypic traits to evaluate the impact of nitrogen deprivation on Camelina sativa
+
+For this experiment, we harvested 4 samples for each genotype*nitrogen treatment. We then measured the height of the plant at senescence, took pictures of the plant, dried the remaining tissue for dry weight, and harvested seeds
+
+Measurements include: branch no., height, seed pod count, seed pod count by branch, “internode” length between seeds pods
